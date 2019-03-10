@@ -1,0 +1,26 @@
+{
+  "name": "clear-env",
+  "version": "1.0.0",
+  "description": "Clear /proc/pid/environ",
+  "main": "index.js",
+  "repository": "bruce-one/clear-env",
+  "scripts": {
+    "build": "node-gyp build",
+    "configure": "node-gyp configure",
+    "test": "TEST=test node test.js"
+  },
+  "author": "bruce_one",
+  "license": "ISC",
+  "dependencies": {
+    "bindings": "^1.5.0"
+  },
+  "devDependencies": {
+    "node-gyp": "^3.8.0"
+  },
+  "files": [
+    "index.js",
+    "test.js",
+    "clear-env.cc",
+    "binding.gyp"
+  ]
+}
