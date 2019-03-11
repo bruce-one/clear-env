@@ -1,6 +1,6 @@
 {
   "name": "clear-env",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Clear /proc/pid/environ",
   "main": "index.js",
   "repository": "bruce-one/clear-env",
