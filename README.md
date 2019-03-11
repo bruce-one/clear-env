@@ -1,5 +1,7 @@
 # Clear env
 
+[![Build Status](https://travis-ci.org/bruce-one/clear-env.svg?branch=master)](https://travis-ci.org/bruce-one/clear-env)
+
 Simple module to clear /proc/pid/environ. Also clears process.env.
 
 ## Example
