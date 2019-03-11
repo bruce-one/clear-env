@@ -1,26 +1,41 @@
 {
   "name": "clear-env",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Clear /proc/pid/environ",
   "main": "index.js",
-  "repository": "bruce-one/clear-env",
+  "repository": {
+    "url": "https://github.com/bruce-one/clear-env.git"
+  },
   "scripts": {
-    "build": "node-gyp build",
-    "configure": "node-gyp configure",
+    "build": "node-pre-gyp build",
+    "clean": "node-pre-gyp clean && node-gyp clean",
+    "configure": "node-pre-gyp configure",
+    "install": "node-pre-gyp install --fallback-to-build",
     "test": "TEST=test node test.js"
   },
   "author": "bruce_one",
   "license": "ISC",
   "dependencies": {
-    "bindings": "^1.5.0"
+    "bindings": "^1.5.0",
+    "node-pre-gyp": "^0.12.0"
   },
   "devDependencies": {
-    "node-gyp": "^3.8.0"
+    "node-pre-gyp-github": "^1.4.3"
   },
   "files": [
     "index.js",
     "test.js",
     "clear-env.cc",
     "binding.gyp"
+  ],
+  "binary": {
+    "module_name": "clearenv",
+    "module_path": "./binding/{platform}-{arch}",
+    "host": "https://github.com/bruce-one/clear-env/releases/download/",
+    "remote_path": "{version}",
+    "package_name": "{module_name}-v{version}-{arch}.tar.gz"
+  },
+  "os": [
+    "linux"
   ]
 }

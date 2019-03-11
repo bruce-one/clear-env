@@ -1,0 +1,22 @@
+language: node_js
+
+node_js:
+  - "8"
+
+compiler:
+  - gcc
+
+install:
+  - npm install --build-from-source --unsafe-perm
+
+script:
+  - npm run test
+  - COMMIT_MESSAGE="${COMMIT_MESSAGE:-$(git show --format=%B -n 1 HEAD|head -n 1)}"; if fgrep -q '[publish]' <<<"${COMMIT_MESSAGE}"; then PUBLISH_BINARY=true; fi;
+  - if [[ $PUBLISH_BINARY == true ]]; then $(npm bin)/node-pre-gyp package && $(npm bin)/node-pre-gyp-github publish -r; fi
+  - npm run clean
+  - npm install --fallback-to-build=false --unsafe-perm
+  - npm run test
+
+env:
+  global:
+    secure: HoYBwNJwMyLd+BDMZu9CmjqL/IwcxaR9ioHfwOeiznQXKfPX1qSelg4Eu7mT806PrrI3svhdqgJqkceiDOQGI3dTlm4gM99X8CV52aYnl7DZ/4OTdVD4oo/oL/PZyi6FcmR8sjWOnO/2U963Z/2oJUUvA+s5oORVBvBxWknGubYdIYMGrSIoH9UqeUcAoCTlZBS41vCkbyxvGNCPZL+X7GscXjwRTY+7mOX7ACFmYfoGWBTIo2ljVrfuDv48liIs4XLI0ZtiaPIKakBM8Of1far2TMxzFy1uUw3yo1nNkXAR2iMPO32G3pYIxdrNZRWcOxkRzxJDV+R/7k7Yxo2NEw8lkTVOpguav0n1MgD1swc7O96X9mkqGsJ5Gi+fBOC/5nPI+EtkEPgQpdLsmtsc7F/6cBpARr+oAVtiuhtqsVJHto4YKeEWrIiJxip+Y1qaFviGPngZft9TN0SINeds6k3pWioT4JXdgaHUwzYhRTdhUoUlCRuc/rwtaFcn36wMRDtf56J/viWYZbwaT5RTVdevy0UKXZIF6pKUvLIP6qMMlOEMldtSE3fShMAFY1sg1qn9TjyM051W127FAPGbPOMmpjV9h2UyY7rQLiwOGVDWZQSEny/JccbMNtp0Sf5Ec7gu9+LEqYw0pgRAtm1e5Vj71mySE6sHuhTNuSrZ4pY=
