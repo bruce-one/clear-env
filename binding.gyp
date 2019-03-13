@@ -2,7 +2,7 @@
   "targets": [
     {
       "target_name": "clearenv",
-      "sources": [ "clear-env.cc" ]
+      "sources": [ "clear-env.c" ]
     },
     {
       "target_name": "action_after_build",
