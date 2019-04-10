@@ -17,7 +17,7 @@ napi_value ClearEnv(napi_env env, napi_callback_info args) {
   return res;
 }
 
-napi_value init(napi_env env, napi_value exports) {
+napi_value clearenv_init(napi_env env, napi_value exports) {
   napi_status status;
   napi_value fn;
 
@@ -27,4 +27,4 @@ napi_value init(napi_env env, napi_value exports) {
   return fn;
 }
 
-NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
+NAPI_MODULE(NODE_GYP_MODULE_NAME, clearenv_init)
